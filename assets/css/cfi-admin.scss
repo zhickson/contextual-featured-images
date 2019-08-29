@@ -24,19 +24,26 @@
         #cfiMedia {
             flex: 2;
             padding: 0 1rem;
-            max-height: 20rem;
             position: relative;
 
-            .components-button {
+            .button, .components-button {
                 margin: 0 .5rem;
 
                 &.is-link {
                     line-height: 2rem;
+                    background: transparent;
+                    border: 0px;
+                    cursor: pointer;
                 }
             }
 
             #cfi_custom_img_container {
                 .editor-post-featured-image__preview {
+                    border: 0px;
+                    background: transparent;
+                    padding: 0px;
+                    cursor: pointer;
+
                     .cfi-img-wrapper {
                         position: relative;
                         max-width: 100%;

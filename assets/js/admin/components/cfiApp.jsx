@@ -46,6 +46,7 @@ export class cfiApp extends Component {
             this.setState({
                 activeCategory: event.target.value,
                 isSelected: false,
+                hasCustomImage: false
             }, () => {
                 // once state is ready, update the new state??
                 
@@ -195,7 +196,7 @@ export class cfiApp extends Component {
             that.setState({
                 error: true,
                 isProcessing: false,
-                hasCustomImage: false,
+                hasCustomImage: true,
                 statusMessage: response.data.message ? response.data.message  : '',
             });
         });
@@ -223,12 +224,21 @@ export class cfiApp extends Component {
         } )
         // Once it's done, update state again
         .success( function( response ) {
-            that.setState({
-                isProcessing: false,
-                hasCustomImage: true,
-                statusMessage: response.data.message ? response.data.message  : '',
-                workingData: response.data.attachment
-            });
+            if ( response.data.attachment ) {
+                that.setState({
+                    isProcessing: false,
+                    hasCustomImage: true,
+                    statusMessage: response.data.message ? response.data.message  : '',
+                    workingData: response.data.attachment
+                });
+            } else {
+                that.setState({
+                    isProcessing: false,
+                    hasCustomImage: false,
+                    statusMessage: response.data.message ? response.data.message  : '',
+                    workingData: response.data.attachment
+                });
+            }
         })
         .error( function( response ) {
             that.setState({
@@ -261,7 +271,7 @@ export class cfiApp extends Component {
                     <div id="cfiConditions">
                         <p><strong>Select a category</strong></p>
 
-                        <select value={activeCategory} className="form-control" onChange={this.handleCategorySelect}>
+                        <select value={activeCategory} className="cfi-select" onChange={this.handleCategorySelect}>
                             <option value="none">-- Select Category --</option>
                             {categorySelectData.map(category => (
                                 <option key={category.id} value={category.id}>{category.name}</option>
@@ -275,7 +285,7 @@ export class cfiApp extends Component {
                             <div>
                                 <p><strong>Set or update featured image</strong></p>
                                 <div id="cfi_custom_img_container" className={ hasCustomImage ? 'show' : 'hidden' }>
-                                    <button type="button" aria-lable="Edit or update the image" className="components-button editor-post-featured-image__preview" onClick={this.handleSetImageClick}>
+                                    <button type="button" aria-lable="Edit or update the image" className="editor-post-featured-image__preview" onClick={this.handleSetImageClick}>
                                         <div className="cfi-img-wrapper">
                                             <img src={ workingData ? workingData.url : '' } alt="" />
                                         </div>
@@ -283,8 +293,8 @@ export class cfiApp extends Component {
                                 </div>
                                 <div id="cfi_loader" className={ isProcessing ? 'show' : 'hidden' }><span className="spinner"></span></div>
                                 <p class="hide-if-no-js">
-                                    <button className="upload-custom-img components-button is-button is-default" id="cfi_upload_img_btn" onClick={this.handleSetImageClick}>{ hasCustomImage ? 'Replace image' : 'Set custom image' }</button>
-                                    <button className="delete-custom-img components-button is-link is-destructive" id="cfi_remove_img_btn" onClick={this.handleRemoveImageClick}>Remove this image</button>
+                                    <button className="upload-custom-img button components-button is-button is-default" id="cfi_upload_img_btn" onClick={this.handleSetImageClick}>{ hasCustomImage ? 'Replace image' : 'Set custom image' }</button>
+                                    <button className="delete-custom-img components-button is-link is-destructive button-link-delete" id="cfi_remove_img_btn" onClick={this.handleRemoveImageClick}>Remove this image</button>
                                 </p>
                                 <input id="cfi_meta_key" name="cfi_meta_key" type="hidden" value={ '_cfi_catch_' + activeCategory } />
                                 <input id="cfi_cat_id" name="cfi_cat_id" type="hidden" value={ activeCategory } />

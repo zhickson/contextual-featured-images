@@ -5,7 +5,7 @@
  * Make yourself @ home.
  *
  * @link              https://dunktree.com/
- * @version			  1.0.0
+ * @version           1.0.0
  * @package           Contextual_Featured_Images
  *
  * @wordpress-plugin
