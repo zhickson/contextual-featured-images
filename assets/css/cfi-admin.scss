@@ -1,0 +1,59 @@
+/* Custom CSS used to style the metabox */
+.cfi-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+
+    .cfi-container {
+        position: relative;
+        display: flex;
+        width: 100%;
+        flex-wrap: nowrap;
+        flex-direction: row;
+
+        #cfiNotices {
+            display: block;
+            position: relative;
+        }
+
+        #cfiConditions {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        #cfiMedia {
+            flex: 2;
+            padding: 0 1rem;
+            max-height: 20rem;
+            position: relative;
+
+            .components-button {
+                margin: 0 .5rem;
+
+                &.is-link {
+                    line-height: 2rem;
+                }
+            }
+
+            #cfi_custom_img_container {
+                .editor-post-featured-image__preview {
+                    .cfi-img-wrapper {
+                        position: relative;
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and ( max-width: 760px ) {
+    .cfi-wrapper { 
+        .cfi-container {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+    }
+  
+}

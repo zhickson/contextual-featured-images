@@ -1,0 +1,46 @@
+# Editors
+project.xml
+project.properties
+/nbproject/private/
+.buildpath
+.project
+.settings*
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+.sublimelinterrc
+
+# Webpack/Grunt
+/node_modules/
+none
+
+# Sass
+.sass-cache/
+
+# Compiled CSS
+/assets/css/*.css
+
+# Minified JS
+/assets/js/admin/*.min.js
+/assets/js/frontend/*.min.js
+
+# OS X metadata
+.DS_Store
+
+# Windows junk
+Thumbs.db
+
+# Unit tests
+/tmp
+
+# Logs
+/logs
+
+# Composer
+/vendor/
+contributors.md
+
+# Packages
+/packages/*
+!/packages/README.md
