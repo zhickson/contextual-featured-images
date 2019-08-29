@@ -17,4 +17,10 @@ class Contextual_Featured_ImagesTest extends WP_UnitTestCase {
         $this->class_instance = new Contextual_Featured_Images();
     }
 
+    public function tearDown() {
+
+        parent::tearDown();  
+        
+	}
+
 }
