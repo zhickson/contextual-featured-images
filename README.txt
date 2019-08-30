@@ -2,7 +2,7 @@
 Contributors: zacharyh96
 Donate link: https://www.paypal.me/dunktree
 Tags: post thumbnail, featured image, categories, context, contextual featured image, thumbnail
-Requires at least: 5.0
+Requires at least: 4.9
 Tested up to: 5.2.2
 Stable tag: trunk
 Requires PHP: 5.6
