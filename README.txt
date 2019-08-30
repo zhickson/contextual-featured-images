@@ -1,35 +1,37 @@
 === Contextual Featured Images ===
-Contributors: zhickson
-Donate link: https://dunktree.com/donate/
-Tags: thumbnails, featured images, categories
-Requires at least: 5.2.1
+Contributors: zacharyh96
+Donate link: https://www.paypal.me/dunktree
+Tags: post thumbnail, featured image, categories, context, contextual featured image, thumbnail
+Requires at least: 5.0
 Tested up to: 5.2.2
-Stable tag: 1.0
+Stable tag: trunk
+Requires PHP: 5.6
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Displays a custom featured image (thumbnail) based on the context of the current post.
 
 == Description ==
 
-Contextual Featured Images provides the functionality to assign a featured image to be displayed
-on Category archives based on the post's category.
+Contextual Featured Images provides the functionality to assign a featured image to a post's category. 
+Then, depending on the context of the post, the custom featured image you set will be used.
+
+Example: Say you have a post with multiple categories such as "Teens", "Adults", etc. When you are visiting the "Teens" archive, you want to show a targeted image for teens, but when visiting the "Adults" archive, you want to show an adult specific image, this plugin will allow you to do that.
+
+It allows you to personalise how posts are displayed to your visitors. Think Netflix's personalisation of show covers, but much simpler. ;)
 
 How to use:
-* Set the post's category.
-* Save the post.
-* Select the post category in the Metabox on the Edit screen.
-* Set a custom image.
-
-Two aspects
-* Admin side (metabox to set featured image(s) for each of the post's categories)
-* Frontend side (hook to featured image filters to display the correct featured image based on the conditional set)
+1. Assign a category to the current post you are editing.
+2. Save the post, and refresh the screen. (this is so the plugin can pick up the category you have just assigned)
+3. Select the post category in the Metabox on the Edit screen.
+4. Select an existing image from the WordPress Media Library or Upload a new custom image.
+5. Your selection will be saved automatically in the background. 
 
 == Installation ==
 
-1. Upload the root folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. And you're ready to go. The plugin will work automatically
+1. Upload the plugin files to the `/wp-content/plugins/contextual-featured-images` directory, or install the plugin through the WordPress plugins screen directly.
+2. Activate the plugin through the 'Plugins' screen in WordPress
+3. The plugin will work automatically, out-of-the-box.
 
 == Frequently Asked Questions ==
 
@@ -44,7 +46,15 @@ Unless, there are custom thumbnail's set for a category, and that category is ac
 
 == Screenshots ==
 
+1. The UI for when the Classic Editor is active.
+2. The UI for when Gutenberg is active.
+
 == Changelog ==
 
 = 1.0 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 1.0 =
+Initial plugin release.

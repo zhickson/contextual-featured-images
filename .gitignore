@@ -37,3 +37,6 @@ contributors.md
 # Packages
 /packages/*
 !/packages/README.md
+
+# WP Plugin files
+/dotorg
