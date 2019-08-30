@@ -1,6 +1,7 @@
 # Contextual Featured Images
 
 [![Build Status](https://travis-ci.org/zhickson/contextual-featured-images.svg?branch=master)](https://travis-ci.org/zhickson/contextual-featured-images)
+[![Minimum PHP Version](https://img.shields.io/travis/php-v/zhickson/contextual-featured-images/master?style=flat-square)](https://php.net/)
 
 ## Welcome to the Contextual Featured Images GitHub repository
 
