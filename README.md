@@ -44,7 +44,3 @@ Yes, custom taxonomies, tags, and other terms are supported.
 ## Contributing
 
 Aww thanks for your interest! Contributing information coming soon!
-
-If you found this plugin helpful, kudos is always welcome, but completely optional. :) 
-
-[Donate](https://www.paypal.me/dunktree)
