@@ -14,11 +14,11 @@ Example: Say you have a post with multiple categories such as "Teens", "Adults",
 It allows you to personalise how posts are displayed to your visitors. Think Netflix's personalisation of show covers, but much simpler. ;)
 
 ### How to use:
-1. Assign a category to the current post you are editing.
-2. Save the post, and refresh the screen. (this is so the plugin can pick up the category you have just assigned)
-3. Select the post category in the Metabox on the Edit screen.
+1. Assign a category, tag, custom taxonomy or term to the current post you are editing.
+2. Save the post, and refresh the screen. (this is so the plugin can pick up the term(s) you have just assigned)
+3. Select the post term in the Metabox on the Edit screen.
 4. Select an existing image from the WordPress Media Library or Upload a new custom image.
-5. Your selection will be saved automatically in the background.
+5. Your selection will be saved automatically in the background. 
 
 ## Installation
 
@@ -37,9 +37,9 @@ Yes, any post type that supports featured images will show the CFI metabox.
 By default, the actual featured image will be displayed.
 Unless, there are custom thumbnail's set for a category, and that category is active (i.e. Category Archives)
 
-### Will you add support for other taxonomies?
+### Does this support custom taxonomies?
 
-Yes, I plan to add support for custom taxonomies, tags, as well as a bunch of other conditionals. Stay tuned!
+Yes, custom taxonomies, tags, and other terms are supported.
 
 ## Contributing
 

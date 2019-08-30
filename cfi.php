@@ -329,6 +329,38 @@ class Contextual_Featured_Images {
 	}
 
 	/**
+	 * Returns an array of taxonomies/terms assigned to
+	 * the current post.
+	 * 
+	 * @since 1.0.0
+	 *
+	 * @global Object $post The current Post object.
+	 * 
+	 * @return array Array of supported post types.
+	 */
+	public function get_object_terms() {
+		global $post;
+
+		$final_terms = array();
+
+		$taxonomies = get_object_taxonomies( $post );
+
+		foreach ( $taxonomies as $term ) {
+			$post_terms = get_the_terms( $post->ID, $term );
+
+			if ( $post_terms && ! is_wp_error( $post_terms ) ) {
+			 
+				foreach ( $post_terms as $cat ) {
+					$final_terms[] = array( 'id' => $cat->term_id, 'name' => $cat->name, 'slug' => $cat->slug );
+				}
+
+			}
+		}
+
+		return $final_terms;
+	}
+
+	/**
 	 * Filters the get_post_thumbnail_id() function.
 	 * 
 	 * A bit hacky, but what can you do ¯\_(ツ)_/¯
@@ -365,12 +397,12 @@ class Contextual_Featured_Images {
 		add_filter( 'get_post_metadata', array( $this, 'get_post_meta_override' ), 10, 4 );
 
 		// First check the context
-		$category = get_queried_object();
+		$term = get_queried_object();
 		
-		if ( isset( $category->term_id ) ) {
+		if ( isset( $term->term_id ) ) {
 
 			// If we have context, override with the featured_image_id
-			$custom_key = '_cfi_catch_' . $category->term_id;
+			$custom_key = '_cfi_catch_' . $term->term_id;
 			$featured_image_id = get_post_meta( $post_id, $custom_key, true );
 			return $featured_image_id;
 

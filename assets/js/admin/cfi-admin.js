@@ -10,7 +10,7 @@ jQuery( function() {
     jQuery(document).ready(function () {
 
         // Grab the initial data that WP loads
-        // This is essentially the current post's categories
+        // This is essentially the current post's terms
         let initialData = window.CFI_DATA;
 
         // Make sure we have some initial data

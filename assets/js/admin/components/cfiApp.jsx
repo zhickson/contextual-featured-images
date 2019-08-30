@@ -25,26 +25,26 @@ export class cfiApp extends Component {
             hasCustomImage: false,
             statusMessage: '',
             error: false,
-            categorySelectData: props.initialData,
-            activeCategory: 'none',
-            activeCategoryData: {},
+            termSelectData: props.initialData,
+            activeTerm: 'none',
+            activeTermData: {},
             workingData: {},
             currentPost: cfi_ajax.current_post
         };
 
-        this.handleCategorySelect = this.handleCategorySelect.bind(this);
+        this.handleTermSelect = this.handleTermSelect.bind(this);
         this.handleSetImageClick = this.handleSetImageClick.bind(this);
         this.handleRemoveImageClick = this.handleRemoveImageClick.bind(this);
         this.handleImageUpload = this.handleImageUpload.bind(this);
         this.handleImageRemove = this.handleImageRemove.bind(this);
-        this.loadCategoryData = this.loadCategoryData.bind(this);
+        this.loadTermData = this.loadTermData.bind(this);
     }
 
-    // Update state when a category is selected
-    handleCategorySelect( event ) {
+    // Update state when a term is selected
+    handleTermSelect( event ) {
         if ( event.target.value === 'none' ) {
             this.setState({
-                activeCategory: event.target.value,
+                activeTerm: event.target.value,
                 isSelected: false,
                 hasCustomImage: false
             }, () => {
@@ -54,16 +54,16 @@ export class cfiApp extends Component {
         } else {
             // here we need to fetch the data for the featured image
             this.setState({
-                activeCategory: event.target.value,
+                activeTerm: event.target.value,
                 isSelected: true,
             }, () => {
                 // once state is ready, update the new state??
-                this.loadCategoryData( this.state.currentPost );
+                this.loadTermData( this.state.currentPost );
             });
         }
     }
 
-    // Update state when a category is selected
+    // Update state when a term is selected
     handleSetImageClick( event ) {
         event.preventDefault();
 
@@ -123,7 +123,7 @@ export class cfiApp extends Component {
         const ajax_data = {
             'action': 'save_custom_image',
             'security': cfi_ajax.nonce,
-            'cfi_meta_key': '_cfi_catch_' + this.state.activeCategory,
+            'cfi_meta_key': '_cfi_catch_' + this.state.activeTerm,
             'cfi_post_id': cfi_ajax.current_post,
             'cfi_attachment_id': attachment_data.id
         };
@@ -151,7 +151,7 @@ export class cfiApp extends Component {
         });
     }
 
-    // Update state when a category is selected
+    // Update state when a term is selected
     handleRemoveImageClick( event ) {
         event.preventDefault();
 
@@ -172,7 +172,7 @@ export class cfiApp extends Component {
         const ajax_data = {
             'action': 'remove_custom_image',
             'security': cfi_ajax.nonce,
-            'cfi_meta_key': '_cfi_catch_' + this.state.activeCategory,
+            'cfi_meta_key': '_cfi_catch_' + this.state.activeTerm,
             'cfi_post_id': cfi_ajax.current_post,
             'cfi_attachment_id': old_data.id
         };
@@ -202,7 +202,7 @@ export class cfiApp extends Component {
         });
     }
 
-    loadCategoryData( post_id ) {
+    loadTermData( post_id ) {
         const that = this;
         // First we update the state, this displays the image to the user
         this.setState({
@@ -213,7 +213,7 @@ export class cfiApp extends Component {
         const ajax_data = {
             'action': 'get_custom_image_ajax',
             'security': cfi_ajax.nonce,
-            'cfi_meta_key': '_cfi_catch_' + this.state.activeCategory,
+            'cfi_meta_key': '_cfi_catch_' + this.state.activeTerm,
             'cfi_post_id': post_id
         };
         // Fetch the meta to database through AJAX
@@ -256,9 +256,9 @@ export class cfiApp extends Component {
             isLoaded, 
             isProcessing,
             isSelected, 
-            activeCategory, 
-            activeCategoryData, 
-            categorySelectData, 
+            activeTerm, 
+            activeTermData, 
+            termSelectData, 
             workingData, 
             hasCustomImage,
             statusMessage 
@@ -269,16 +269,16 @@ export class cfiApp extends Component {
                 <div className='cfi-container'>
 
                     <div id="cfiConditions">
-                        <p><strong>Select a category</strong></p>
+                        <p><strong>Select a term</strong></p>
 
-                        <select value={activeCategory} className="cfi-select" onChange={this.handleCategorySelect}>
-                            <option value="none">-- Select Category --</option>
-                            {categorySelectData.map(category => (
-                                <option key={category.id} value={category.id}>{category.name}</option>
+                        <select value={activeTerm} className="cfi-select" onChange={this.handleTermSelect}>
+                            <option value="none">-- Select Term --</option>
+                            {termSelectData.map(term => (
+                                <option key={term.id} value={term.id}>{term.name}</option>
                             ))}
                         </select>
 
-                        <p className='cfi-notif cfi-info'><small>If you don't see any categories listed, make sure to first assign this post to a category, and then update the post and/or refresh the page to see the category in the dropdown.</small></p>
+                        <p className='cfi-notif cfi-info'><small>If you don't see any terms listed, make sure to first assign this post to a term, and then update the post and/or refresh the page to see the term in the dropdown.</small></p>
                     </div>
                     <div id='cfiMedia'>
                         { isSelected ? (
@@ -296,13 +296,13 @@ export class cfiApp extends Component {
                                     <button className="upload-custom-img button components-button is-button is-default" id="cfi_upload_img_btn" onClick={this.handleSetImageClick}>{ hasCustomImage ? 'Replace image' : 'Set custom image' }</button>
                                     <button className="delete-custom-img components-button is-link is-destructive button-link-delete" id="cfi_remove_img_btn" onClick={this.handleRemoveImageClick}>Remove this image</button>
                                 </p>
-                                <input id="cfi_meta_key" name="cfi_meta_key" type="hidden" value={ '_cfi_catch_' + activeCategory } />
-                                <input id="cfi_cat_id" name="cfi_cat_id" type="hidden" value={ activeCategory } />
+                                <input id="cfi_meta_key" name="cfi_meta_key" type="hidden" value={ '_cfi_catch_' + activeTerm } />
+                                <input id="cfi_cat_id" name="cfi_cat_id" type="hidden" value={ activeTerm } />
                                 <input id="cfi_attachment_id" name="cfi_attachment_id" type="hidden" value={ workingData ? workingData.id : '' } />
                                 <input id="cfi_post_id" name="cfi_post_id" type="hidden" value="" />
                             </div>
                         ) : (
-                            <p><em>Select a category first...</em></p>
+                            <p><em>Select a term first...</em></p>
                         ) }
                     </div>
 
