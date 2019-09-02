@@ -7,6 +7,8 @@
  * @arigato https://github.com/JeffreyWay/
  */
 const mix = require( 'laravel-mix' );
+const WebpackRTLPlugin = require( 'webpack-rtl-plugin' );
+const wpPot = require( 'wp-pot' );
 
 // Fix for versioning
 mix.setPublicPath( 'dist' );
@@ -17,6 +19,7 @@ mix.setResourceRoot( '../' );
 // Use WordPress jQuery
 mix.webpackConfig( {
     externals: {
+        $: 'jQuery',
         'jquery': 'jQuery',
         'react': 'React'
     }
@@ -29,4 +32,25 @@ mix.sass( 'assets/css/cfi-admin.scss', 'dist/styles' );
 // Version in production
 if ( mix.inProduction() ) {
     mix.version();
+    
+    // RTL support.
+    mix.webpackConfig( {
+        plugins: [
+            new WebpackRTLPlugin( {
+                suffix: '-rtl',
+                minify: true,
+            } )
+        ]
+    } );
+
+     // POT file.
+     wpPot( {
+        package: 'Contextual Featured Images',
+        domain: 'cfi',
+        destFile: 'languages/cfi.pot',
+        relativeTo: './',
+        src: [ './**/*.php', '!./includes/libraries/**/*', '!./vendor/**/*', '!./docker/**/*', '!./dotorg/**/*', '!./node_modules/**/*' ],
+        bugReport: 'https://github.com/zhickson/contextual-featured-images/issues/new',
+        team: 'Dunktree <zhickson@dunktree.com>',
+    } );
 }
