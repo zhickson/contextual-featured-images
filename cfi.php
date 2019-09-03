@@ -10,7 +10,6 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Contextual Featured Images
- * Plugin URI:        https://dunktree.com/
  * Description:       Displays a custom featured image depending on the context.
  * Version:           1.0.0
  * Author:            Zachary Hickson
