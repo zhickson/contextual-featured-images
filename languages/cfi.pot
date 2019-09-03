@@ -15,22 +15,50 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: cfi.php:148
+#: cfi.php:151
+msgid "Your site could be faster and more secure with a newer PHP version."
+msgstr ""
+
+#: cfi.php:152
+msgid "Hey, we've noticed that you're running an outdated version of PHP. PHP is the programming language that WordPress and Give are built on. The version that is currently used for your site is no longer supported. Newer versions of PHP are both faster and more secure. In fact, your version of PHP no longer receives security updates, which is why we're sending you this notice."
+msgstr ""
+
+#: cfi.php:153
+msgid "Hosts have the ability to update your PHP version, but sometimes they don't dare to do that because they're afraid they'll break your site."
+msgstr ""
+
+#: cfi.php:154
+msgid "To which version should I update?"
+msgstr ""
+
+#: cfi.php:155
+msgid "You should update your PHP version to either 5.6 or to 7.0 or 7.1. On a normal WordPress site, switching to PHP 5.6 should never cause issues. We would however actually recommend you switch to PHP7. There are some plugins that are not ready for PHP7 though, so do some testing first. PHP7 is much faster than PHP 5.6. It's also the only PHP version still in active development and therefore the better option for your site in the long run."
+msgstr ""
+
+#: cfi.php:223
 msgid "Contextual Featured Images"
 msgstr ""
 
-#: cfi.php:202
+#: cfi.php:277
 msgid "Your image was saved succesfully."
 msgstr ""
 
-#: cfi.php:234
+#: cfi.php:309
 msgid "Your image was removed succesfully."
 msgstr ""
 
-#: cfi.php:285
+#: cfi.php:360
 msgid "Error couldn't find attachment"
 msgstr ""
 
-#: cfi.php:296
+#: cfi.php:371
 msgid "No image saved for this attachment ID"
+msgstr ""
+
+#: inc/views/html-metabox.php:15
+msgid "Sorry, you are not allowed to upload files."
+msgstr ""
+
+#: inc/views/html-metabox.php:26
+msgid "Please enable Javascript."
 msgstr ""

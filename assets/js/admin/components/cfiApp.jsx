@@ -1,4 +1,5 @@
 import jQuery from 'jquery';
+const { __ } = wp.i18n;
 const { Component } = wp.element;
 
 let frame;
@@ -77,9 +78,9 @@ export class cfiApp extends Component {
 
         // Create a new media frame
         frame = wp.media({
-            title: 'Select or Upload Image',
+            title: __( 'Select or Upload Image', 'cfi' ),
             button: {
-                text: 'Use this image'
+                text: __( 'Use this Image', 'cfi' )
             },
             multiple: false,  // Set to true to allow multiple files to be selected
             library: {
@@ -269,23 +270,23 @@ export class cfiApp extends Component {
                 <div className='cfi-container'>
 
                     <div id="cfiConditions">
-                        <p><strong>Select a term</strong></p>
+                        <p><strong>{ __( 'Select a term', 'cfi' ) }</strong></p>
 
                         <select value={activeTerm} className="cfi-select" onChange={this.handleTermSelect}>
-                            <option value="none">-- Select Term --</option>
+                            <option value="none">-- { __( 'Select a term', 'cfi' ) } --</option>
                             {termSelectData.map(term => (
                                 <option key={term.id} value={term.id}>{term.name}</option>
                             ))}
                         </select>
 
-                        <p className='cfi-notif cfi-info'><small>If you don't see any terms listed, make sure to first assign this post to a term, and then update the post and/or refresh the page to see the term in the dropdown.</small></p>
+                        <p className='cfi-notif cfi-info'><small>{ __( 'If you don\'t see any terms listed, make sure to first assign a term to this post, and then update the post and/or refresh the page to see the term listed in the dropdown.', 'cfi' ) }</small></p>
                     </div>
                     <div id='cfiMedia'>
                         { isSelected ? (
                             <div>
-                                <p><strong>Set or update featured image</strong></p>
+                                <p><strong>{ __( 'Set or update featured image', 'cfi' ) }</strong></p>
                                 <div id="cfi_custom_img_container" className={ hasCustomImage ? 'show' : 'hidden' }>
-                                    <button type="button" aria-lable="Edit or update the image" className="editor-post-featured-image__preview" onClick={this.handleSetImageClick}>
+                                    <button type="button" aria-lable={ __( 'Edit or update the image', 'cfi' ) } className="editor-post-featured-image__preview" onClick={this.handleSetImageClick}>
                                         <div className="cfi-img-wrapper">
                                             <img src={ workingData ? workingData.url : '' } alt="" />
                                         </div>
@@ -293,8 +294,8 @@ export class cfiApp extends Component {
                                 </div>
                                 <div id="cfi_loader" className={ isProcessing ? 'show' : 'hidden' }><span className="spinner"></span></div>
                                 <p class="hide-if-no-js">
-                                    <button className="upload-custom-img button components-button is-button is-default" id="cfi_upload_img_btn" onClick={this.handleSetImageClick}>{ hasCustomImage ? 'Replace image' : 'Set custom image' }</button>
-                                    <button className="delete-custom-img components-button is-link is-destructive button-link-delete" id="cfi_remove_img_btn" onClick={this.handleRemoveImageClick}>Remove this image</button>
+                                    <button className="upload-custom-img button components-button is-button is-default" id="cfi_upload_img_btn" onClick={this.handleSetImageClick}>{ hasCustomImage ? __( 'Replace image', 'cfi' ) : __( 'Set custom image', 'cfi' ) }</button>
+                                    <button className="delete-custom-img components-button is-link is-destructive button-link-delete" id="cfi_remove_img_btn" onClick={this.handleRemoveImageClick}>{ __( 'Remove this image', 'cfi' ) }</button>
                                 </p>
                                 <input id="cfi_meta_key" name="cfi_meta_key" type="hidden" value={ '_cfi_catch_' + activeTerm } />
                                 <input id="cfi_cat_id" name="cfi_cat_id" type="hidden" value={ activeTerm } />
@@ -302,7 +303,7 @@ export class cfiApp extends Component {
                                 <input id="cfi_post_id" name="cfi_post_id" type="hidden" value="" />
                             </div>
                         ) : (
-                            <p><em>Select a term first...</em></p>
+                            <p><em>{ __( 'Select a term first', 'cfi' ) }...</em></p>
                         ) }
                     </div>
 

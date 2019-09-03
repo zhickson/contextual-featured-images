@@ -181,7 +181,7 @@ if ( ! class_exists( 'Contextual_Featured_Images' ) ) :
 				wp_enqueue_script( 
 					'cfi_admin_script', 
 					plugins_url( 'dist/scripts/cfi-admin.js', __FILE__ ), 
-					array( 'wp-element', 'jquery' ), 
+					array( 'wp-element', 'wp-i18n', 'jquery' ), 
 					CFI_VER 
 				);
 				wp_localize_script( 
@@ -193,6 +193,7 @@ if ( ! class_exists( 'Contextual_Featured_Images' ) ) :
 						'current_post' => absint( get_the_ID() ),
 					)
 				);
+				wp_set_script_translations( 'cfi_admin_script', 'cfi' );
 				
 				wp_enqueue_style( 'cfi_admin_css', plugins_url( 'dist/styles/cfi-admin.css', __FILE__ ), false, CFI_VER );
 

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! current_user_can( 'upload_files' ) ) {
-	wp_die( __( 'Sorry, you are not allowed to upload files.' ) );
+	wp_die( __( 'Sorry, you are not allowed to upload files.', 'cfi' ) );
 }
 
 $terms = $this->get_object_terms();
@@ -23,6 +23,6 @@ $terms = $this->get_object_terms();
     <?php
         echo '<script id="cfi-data">var CFI_DATA=' . json_encode( $terms ) . ';</script>'
     ?>
-    <div id="cfiApp">Please enable JavaScript.</div>
+    <div id="cfiApp"><?php _e( 'Please enable Javascript.', 'cfi' ); ?></div>
     <?php wp_nonce_field( 'cfi_secure_action', 'cfi_secure' ); ?>
 </div>
