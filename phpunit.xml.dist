@@ -1,16 +1,11 @@
 <?xml version="1.0"?>
-<phpunit
-	bootstrap="tests/bootstrap.php"
-	backupGlobals="false"
-	colors="true"
-	convertErrorsToExceptions="true"
-	convertNoticesToExceptions="true"
-	convertWarningsToExceptions="true"
-	>
+<phpunit bootstrap="tests/php/bootstrap.php" backupGlobals="false" colors="true">
+	<php>
+		<const name="PHPUNIT_CFI_TESTSUITE" value="true"/>
+	</php>
 	<testsuites>
-		<testsuite>
-			<directory prefix="test-" suffix=".php">./tests/</directory>
-			<exclude>./tests/test-sample.php</exclude>
+		<testsuite name="general">
+			<directory prefix="test" suffix=".php">tests/php</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>
