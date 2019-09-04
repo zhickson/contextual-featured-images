@@ -1,5 +1,6 @@
 # Contextual Featured Images
 
+![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/contextual-featured-images)
 [![Build Status](https://travis-ci.org/zhickson/contextual-featured-images.svg?branch=master)](https://travis-ci.org/zhickson/contextual-featured-images)
 [![Minimum PHP Version](https://img.shields.io/travis/php-v/zhickson/contextual-featured-images/master?style=flat-square)](https://php.net/)
 
